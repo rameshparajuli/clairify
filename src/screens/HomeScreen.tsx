@@ -8,15 +8,27 @@ const HomeScreen = () => {
   const user = useAppSelector((state) => state.user.information);
 
   if (isLoading) {
-    return <Text>Loading...</Text>;
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>Loading...</Text>;
+      </View>
+    );
   }
 
   if (authError) {
-    return <Text>{authError.message}</Text>;
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>{authError.message}</Text>
+      </View>
+    );
   }
 
   if (!user?.name) {
-    return <Text>No user data available.</Text>;
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>No user data available.</Text>
+      </View>
+    );
   }
 
   return (
@@ -25,7 +37,9 @@ const HomeScreen = () => {
         source={{ uri: user?.picture }}
         className="w-24 h-24 rounded-full"
       />
-      <Text className="text-xl mt-4">Name: {user?.name}</Text>
+      <Text className="text-xl mt-4">
+        Name: {`${user?.given_name} ${user?.family_name}`}
+      </Text>
       <Text className="text-lg mt-2">Email: {user?.email}</Text>
     </View>
   );

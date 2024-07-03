@@ -5,7 +5,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { authActions, userActions } from "../redux/actions";
 import Colors from "../theme/colors";
 
-const ProfileScreen = () => {
+const SettingScreen = () => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +21,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <View>
+    <View className="flex-1 justify-center items-center">
       {isLoading ? (
         <ActivityIndicator size="large" color={Colors.app_color} />
       ) : (
@@ -33,4 +33,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default SettingScreen;
