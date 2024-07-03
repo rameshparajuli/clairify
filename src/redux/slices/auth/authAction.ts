@@ -1,31 +1,45 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { api } from "../../../services/api";
-import { AuthRequest, AuthResponse } from "../../../models/auth.model";
 import userSlice from "../user/userSlice";
+import Axios from "axios";
+import { Auth, AuthReq } from "../../../models/auth.model";
+import { User } from "../../../models/user.model";
 
-export const authLogin = createAsyncThunk<AuthResponse, AuthRequest>(
-  "auth/authLogin",
-  async (obj, { dispatch }) => {
-    const requestObject = {
-      email: `${obj.email}`,
-    };
+export const authLogin = createAsyncThunk<
+  User,
+  AuthReq,
+  { rejectValue: string }
+>("authLogin", async ({ token }, { dispatch, rejectWithValue }) => {
+  try {
+    const AuthApi = Axios.create({
+      baseURL: "https://www.googleapis.com",
+      timeout: 10000,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-    const response = await api.post<AuthResponse>(
-      "/google-signin",
-      requestObject
+    const response = await AuthApi.get("/userinfo/v2/me");
+
+    console.log("response is", JSON.stringify(response));
+
+    dispatch(
+      userSlice.actions.setUser({
+        email: response.data.email,
+        family_name: response.data.family_name,
+        given_name: response.data.given_name,
+        id: response.data.id,
+        name: response.data.name,
+        picture: response.data.picture,
+        verified_email: response.data.verified_email,
+      })
     );
 
-    const { message, data } = response.data;
-
-    if (response?.status !== 200) {
-      throw new Error(message);
-    }
-
-    if (response.status === 200) {
-      dispatch(userSlice.actions.setUser(data));
-    }
-
-    return response.data;
+    return response;
+  } catch (error) {
+    console.error("Failed to fetch user info:", error);
+    return rejectWithValue("Failed to fetch user info");
   }
-);
+});

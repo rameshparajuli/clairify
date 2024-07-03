@@ -3,13 +3,14 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../../models/user.model";
-import { saveStorage, deleteStorage } from "../../../utils/secureStorage";
-import { USER_DETAILS } from "../../../constants";
 
-const initialState: User = {
-  name: "",
-  email: "",
-  picture: "",
+interface UserProps {
+  information?: User;
+  isLoaded: boolean;
+}
+
+const initialState: UserProps = {
+  isLoaded: false,
 };
 
 const userSlice = createSlice({
@@ -17,15 +18,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<User>) => {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.picture = action.payload.picture;
-
-      saveStorage(USER_DETAILS, action.payload);
+      state.information = action.payload;
+      state.isLoaded = true;
     },
     clearUser: (state) => {
       state = initialState;
-      deleteStorage(USER_DETAILS);
     },
   },
 });

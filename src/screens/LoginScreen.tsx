@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -11,98 +11,33 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import * as Google from "expo-auth-session/providers/google";
+import * as WebBrowser from "expo-web-browser";
 
 import { authActions } from "../redux/actions";
 
-import { USER_DETAILS } from "../constants";
-import {
-  getStorage,
-  getSecureItem,
-  saveSecureItem,
-  saveStorage,
-  deleteSecureItem,
-  deleteStorage,
-} from "../utils/secureStorage";
 import Colors from "../theme/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useAppSelector } from "../redux/hooks";
-import { AuthRequest } from "../models/auth.model";
 import { AppDispatch } from "../redux/store";
+import { userRequest } from "../models/auth.model";
+
+WebBrowser.maybeCompleteAuthSession();
 
 const LoginScreen = () => {
   const { isLoading, error } = useAppSelector((state) => state.auth);
 
-  const [userInfo, setUserInfo] = useState(null);
+  const [request, response, promptAsync] = Google.useAuthRequest(userRequest);
 
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId:
-      "108956936509-r87c3hqm8n0fd060t32g95eq24t37p66.apps.googleusercontent.com",
-    iosClientId:
-      "108956936509-do44tqq2ntcbqec00eemgdj6g5jhovgl.apps.googleusercontent.com",
-    webClientId:
-      "108956936509-1ggpo7345qum00fu2o1k96o80lmi2a80.apps.googleusercontent.com",
-  });
-
-  useEffect(() => {
-    handleSignInWithGoogle();
-  }, [response]);
-
-  const data = {
-    auth_token: "token_success",
-    data: {
-      email: "rameshparajuli09@gmail.com",
-      name: "Ramesh Parajuli",
-      picture: "https://avatars.githubusercontent.com/u/27843187?v=4",
-    },
-  };
-
-  const obj: AuthRequest = {
-    email: "rameshparajuli09@gmail.com",
-  };
   const dispatch: AppDispatch = useDispatch();
 
-  const handleSignInWithGoogle = async () => {
-    const userDetails = await getStorage(USER_DETAILS);
-
-    if (!userDetails) {
-      if (response?.type === "success") {
-        await getUserInfo(response.authentication?.accessToken);
-      }
-    } else {
-      await saveStorage(USER_DETAILS, JSON.parse(userDetails));
+  useEffect(() => {
+    if (response?.type === "success") {
+      const { authentication } = response;
+      authentication?.accessToken &&
+        dispatch(authActions.authLogin({ token: authentication?.accessToken }));
     }
-
-    // promptAsync();
-    // try {
-    //   dispatch(authActions.authLogin(obj));
-    // } catch (error) {
-    //   console.error("signin error:", error);
-    // } finally {
-    // }
-    // const user = await GoogleAuthentication.signIn(); // Example function to handle Google sign-in
-    // if (user) {
-    //   navigation.navigate("Home");
-    // }
-  };
-
-  const getUserInfo = async (token: string | undefined) => {
-    if (!token) return;
-
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/userinfo/v2/me",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      const userDetails = response.json();
-
-      await await saveStorage(USER_DETAILS, userDetails);
-    } catch (error) {
-    } finally {
-    }
-  };
+    console.log("authentication", response);
+  }, [response]);
 
   const onPressTerms = () => {
     alert("terms and condition");
