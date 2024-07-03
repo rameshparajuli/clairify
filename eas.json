@@ -3,9 +3,16 @@
     "version": ">= 10.0.3"
   },
   "build": {
+    "base": {
+      "env": {}
+    },
     "development": {
+      "extends": "base",
       "developmentClient": true,
       "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
       "ios": {
         "simulator": true
       }

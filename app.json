@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#3687b7"
     },
     "ios": {
       "supportsTablet": true,
@@ -22,9 +22,10 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#3687b7"
       },
-      "package": "com.rmsparajuli.clairify"
+      "package": "com.rmsparajuli.clairify",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",

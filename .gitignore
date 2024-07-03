@@ -9,9 +9,10 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-.env
+.env*
 .env*.local
 credentials.json
+credentials
 
 
 
