@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import userSlice from "../user/userSlice";
 import Axios from "axios";
-import { Auth, AuthReq } from "../../../models/auth.model";
+import { AuthReq } from "../../../models/auth.model";
 import { User } from "../../../models/user.model";
 
 export const authLogin = createAsyncThunk<

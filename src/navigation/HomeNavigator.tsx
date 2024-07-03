@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -13,17 +13,20 @@ const HomeNavigator = () => {
         name="home"
         component={HomeScreen}
         options={{
+          title: "Home",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="profile"
-        component={ProfileScreen}
+        name="setting"
+        component={SettingsScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
+            <Ionicons name="settings" color={color} size={size} />
           ),
         }}
       />
