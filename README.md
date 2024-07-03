@@ -11,17 +11,9 @@
 2. Start the app
 
    ```bash
-    npx expo start
+    npm start
    ```
 
-## <p> to develop app for ios  </p>
-
-   ```bash
-   eas build --platform ios --profile development
-   ```
-
-## <p> to develop app for android  </p>
-   eas build --platform android --profile development
 
    
 # Author
