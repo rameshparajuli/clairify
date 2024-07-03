@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
 
-import {
-  deleteSecureItem,
-  deleteStorage,
-  saveSecureItem,
-} from "../../../utils/secureStorage";
-
 import { authLogin } from "./authAction";
-import { AUTH_TOKEN_KEY, USER_DETAILS } from "../../../constants";
 
 interface AuthState {
   token: string | null;
@@ -30,7 +23,6 @@ const authSlice = createSlice({
     setToken: (state, action: PayloadAction<{ token: string }>) => {
       state.token = action.payload.token;
       state.isAuthenticated = true;
-      saveSecureItem(AUTH_TOKEN_KEY, action.payload.token);
     },
     clearToken: (state) => {
       state.token = null;

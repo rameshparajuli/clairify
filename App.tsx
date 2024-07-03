@@ -5,8 +5,8 @@ import {
   initialWindowMetrics,
 } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import AppNavigator from "./src/navigation/AppNavigator";
-import { store } from "./src/redux/store";
+import AppNavigator from "./app/navigation/AppNavigator";
+import { store } from "./app/redux/store";
 
 const App = () => {
   return (

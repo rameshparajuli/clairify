@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import HomeNavigator from "./HomeNavigator";
 import { useAppSelector } from "../redux/hooks";
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
 
 const Stack = createNativeStackNavigator();
 
