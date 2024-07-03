@@ -16,7 +16,7 @@ const AppNavigator = () => {
   return (
     <NavigationContainer fallback={<Loading />}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isAuthenticated ? (
+        {isAuthenticated && !!userData ? (
           <Stack.Screen name="home_navigator" component={HomeNavigator} />
         ) : (
           <Stack.Screen name="login" component={LoginScreen} />
