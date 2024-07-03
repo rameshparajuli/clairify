@@ -17,6 +17,18 @@
 # Note 🚨
  Currently working only on the web
 
+</br>
+
+# Setup .env file
+[From Google cloud](https://console.cloud.google.com/apis/credentials)</br>
+
+```
+EXPO_PUBLIC_API_URL=<URL value>
+EXPO_CLIENT_ID_WEB=<web_id>
+EXPO_CLIENT_ID_IOS=<ios_id>
+EXPO_CLIENT_ID_ANDROID=<android_id>
+```
+
 # Technology used:
 
 -[@expo/vector-icons](https://icons.expo.fyi/Index) </br>
