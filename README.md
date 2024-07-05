@@ -49,6 +49,16 @@ EXPO_CLIENT_ID_IOS=<ios_id>
 EXPO_CLIENT_ID_ANDROID=<android_id>
 ```
 
+</br>
+
+# IOS Demo:
+
+![ezgif-2-020c666ed4](https://github.com/rameshparajuli/clairify/assets/31570709/5f510c4c-4187-47a3-9b62-eafab2f10601)
+
+
+
+</br>
+
 # Technology used:
 
 -[@expo/vector-icons](https://icons.expo.fyi/Index) </br> -[@react-native-async-storage/async-storage](https://github.com/react-native-async-storage/async-storage/tree/main/packages/default-storage)</br> -[@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/)</br> -[@react-navigation/native](https://reactnavigation.org/docs/getting-started/)</br> -[@react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator/)</br> -[@reduxjs/toolkit](https://redux-toolkit.js.org/introduction/getting-started)</br> -[react-redux](https://react-redux.js.org/introduction/getting-started)</br> -[expo-auth-session](https://docs.expo.dev/versions/latest/sdk/auth-session/)</br> -[expo-secure-store](https://docs.expo.dev/versions/latest/sdk/securestore/)</br> -[nativewind](https://www.nativewind.dev/quick-starts/expo)</br> -[@react-native-google-signin/google-signin]()</br></br>
