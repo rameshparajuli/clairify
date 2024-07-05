@@ -53,7 +53,8 @@ EXPO_CLIENT_ID_ANDROID=<android_id>
 
 # IOS Demo:
 
-![ezgif-2-020c666ed4](https://github.com/rameshparajuli/clairify/assets/31570709/5f510c4c-4187-47a3-9b62-eafab2f10601)
+![ezgif-2-8226169414](https://github.com/rameshparajuli/clairify/assets/31570709/06a61248-ae37-493f-b1a5-659f465da52d)
+
 
 
 
