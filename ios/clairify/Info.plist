@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>myapp</string>
+          <string>com.rmsparajuli.clairify</string>
           <string>com.rmsparajuli.clairify</string>
         </array>
       </dict>
@@ -35,6 +35,12 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>exp+clairify</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.108956936509-8m7mpsvm5o4pj9e14dc5pa9sjve7eka9</string>
         </array>
       </dict>
     </array>

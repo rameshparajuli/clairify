@@ -1,4 +1,4 @@
-function prepareObject(value?: unknown): string {
+export function prepareObject(value?: unknown): string {
   if (value === null || value === undefined) {
     return "";
   }

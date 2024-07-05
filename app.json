@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
-    "scheme": "clairify",
+    "scheme": "com.rmsparajuli.clairify",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -24,15 +24,25 @@
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#3687b7"
       },
-      "package": "com.rmsparajuli.clairify",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.rmsparajuli.clairify"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-secure-store"],
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.108956936509-8m7mpsvm5o4pj9e14dc5pa9sjve7eka9"
+        }
+      ]
+    ],
+
     "experiments": {
       "typedRoutes": true
     },

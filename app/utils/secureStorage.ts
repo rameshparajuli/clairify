@@ -1,5 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { prepareObject } from "./utils";
 
 export async function saveSecureItem(key: string, value: string) {
   await SecureStore.setItemAsync(key, value);

@@ -12,6 +12,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
+import * as AuthSession from "expo-auth-session";
 
 import { authActions } from "../redux/actions";
 
@@ -33,10 +34,11 @@ const LoginScreen = () => {
   useEffect(() => {
     if (response?.type === "success") {
       const { authentication } = response;
+      __DEV__ && console.log("authentication", authentication);
       authentication?.accessToken &&
         dispatch(authActions.authLogin({ token: authentication?.accessToken }));
     }
-    console.log("authentication", response);
+    __DEV__ && console.log("authentication", response);
   }, [response]);
 
   const onPressTerms = () => {

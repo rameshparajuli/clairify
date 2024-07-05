@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
 
 import { authLogin } from "./authAction";
+import { AUTH_TOKEN_KEY, USER_DETAILS } from "@/constants";
+import { deleteSecureItem, deleteStorage } from "../../../utils/secureStorage";
 
 interface AuthState {
   token: string | null;
@@ -29,6 +31,9 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = undefined;
       state.isLoading = false;
+
+      deleteSecureItem(AUTH_TOKEN_KEY);
+      deleteStorage(USER_DETAILS);
     },
   },
   extraReducers: (builder) => {

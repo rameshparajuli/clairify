@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button, ActivityIndicator } from "react-native";
+import { View, Button, ActivityIndicator, StyleSheet } from "react-native";
 
 import { useAppDispatch } from "../redux/hooks";
 import { authActions, userActions } from "../redux/actions";
@@ -21,7 +21,7 @@ const SettingScreen = () => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center">
+    <View style={styles.container}>
       {isLoading ? (
         <ActivityIndicator size="large" color={Colors.app_color} />
       ) : (
@@ -32,5 +32,13 @@ const SettingScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default SettingScreen;
