@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { useAppSelector } from "../redux/hooks";
 
 const HomeScreen = () => {
@@ -9,7 +9,7 @@ const HomeScreen = () => {
 
   if (isLoading) {
     return (
-      <View className="flex-1 justify-center items-center">
+      <View style={styles.container}>
         <Text>Loading...</Text>;
       </View>
     );
@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
   if (authError) {
     return (
-      <View className="flex-1 justify-center items-center">
+      <View style={styles.container}>
         <Text>{authError.message}</Text>
       </View>
     );
@@ -25,18 +25,15 @@ const HomeScreen = () => {
 
   if (!user?.name) {
     return (
-      <View className="flex-1 justify-center items-center">
+      <View style={styles.container}>
         <Text>No user data available.</Text>
       </View>
     );
   }
 
   return (
-    <View className="flex-1 justify-center items-center">
-      <Image
-        source={{ uri: user?.picture }}
-        className="w-24 h-24 rounded-full"
-      />
+    <View style={styles.container}>
+      <Image style={styles.imageContainer} source={{ uri: user?.picture }} />
       <Text className="text-xl mt-4">
         Name: {`${user?.given_name} ${user?.family_name}`}
       </Text>
@@ -44,5 +41,18 @@ const HomeScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  imageContainer: {
+    height: 75,
+    width: 75,
+    borderRadius: 35,
+  },
+});
 
 export default HomeScreen;
